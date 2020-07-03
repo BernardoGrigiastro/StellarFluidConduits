@@ -54,7 +54,7 @@ repositories {
 dependencies {
     deobfProvided "com.enderio.core:EnderCore:${mc_version}-${endercore_version}"
     //compile "com.enderio.core:EnderCore:${endercore_version}:core"
-    deobfCompile("com.enderio:EnderIO:${mc_version}-5.0.50"){
+    deobfCompile("com.enderio:EnderIO:${mc_version}-5.2.59"){
         transitive = false
     }
     compile "info.loenwind.autoconfig:AutoConfig:${mc_version}-1.0.2"
