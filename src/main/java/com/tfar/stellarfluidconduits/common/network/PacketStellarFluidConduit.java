@@ -36,7 +36,7 @@ public class PacketStellarFluidConduit extends PacketConduitFilter<StellarFluidC
     }
 
     @Override
-    public void toBytes(ByteBuf buf) {
+    public void write(ByteBuf buf) {
         super.toBytes(buf);
         buf.writeShort(colIn.ordinal());
         buf.writeShort(colOut.ordinal());
@@ -46,7 +46,7 @@ public class PacketStellarFluidConduit extends PacketConduitFilter<StellarFluidC
     }
 
     @Override
-    public void fromBytes(ByteBuf buf) {
+    public void read(ByteBuf buf) {
         super.fromBytes(buf);
         colIn = DyeColor.values()[buf.readShort()];
         colOut = DyeColor.values()[buf.readShort()];
@@ -85,7 +85,5 @@ public class PacketStellarFluidConduit extends PacketConduitFilter<StellarFluidC
                 }
             }
         }
-
     }
-
 }

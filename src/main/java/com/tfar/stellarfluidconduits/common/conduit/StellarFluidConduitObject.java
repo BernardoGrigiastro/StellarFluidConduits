@@ -69,23 +69,6 @@ public enum StellarFluidConduitObject implements IModObjectBase {
         this.modTileEntity = null;
     }
 
-    @Nullable
-    @Override
-    @Deprecated
-    public final Class<?> getClazz() {
-        return null;
-    }
-
-    @Override
-    public final void setItem(@Nullable Item obj) {
-        this.item = obj;
-    }
-
-    @Override
-    public final void setBlock(@Nullable Block obj) {
-        this.block = obj;
-    }
-
     @Nonnull
     @Override
     public final String getUnlocalisedName() {
@@ -133,19 +116,5 @@ public enum StellarFluidConduitObject implements IModObjectBase {
     @Override
     public BiFunction<IModObject, Block, Item> getItemCreator() {
         return NullHelper.first(itemMaker, IModObject.WithBlockItem.itemCreator);
-    }
-
-    @Override
-    @Nullable
-    @Deprecated
-    public final String getBlockMethodName() {
-        return null;
-    }
-
-    @Override
-    @Nullable
-    @Deprecated
-    public final String getItemMethodName() {
-        return null;
     }
 }

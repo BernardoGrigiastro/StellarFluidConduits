@@ -135,7 +135,7 @@ public class StellarFluidConduitNetwork extends AbstractConduitNetwork<ILiquidCo
 
             filling = true;
 
-            if (resource == null || !matchedFilter(resource, tank.con, tank.conDir, true)) {
+            if (!matchedFilter(resource, tank.con, tank.conDir, true)) {
                 return 0;
             }
 
@@ -194,7 +194,7 @@ public class StellarFluidConduitNetwork extends AbstractConduitNetwork<ILiquidCo
     }
 
     public IFluidTankProperties[] getTankProperties(@Nonnull StellarFluidConduit con, @Nonnull EnumFacing conDir) {
-        List<IFluidTankProperties> res = new ArrayList<IFluidTankProperties>(tanks.size());
+        List<IFluidTankProperties> res = new ArrayList<>(tanks.size());
         NetworkTank tank = getTank(con, conDir);
         for (NetworkTank target : tanks) {
             if (!target.equals(tank) && target.isValid()) {
@@ -203,7 +203,7 @@ public class StellarFluidConduitNetwork extends AbstractConduitNetwork<ILiquidCo
                 }
             }
         }
-        return res.toArray(new IFluidTankProperties[res.size()]);
+        return res.toArray(new IFluidTankProperties[0]);
     }
 
     static class NetworkTankKey {
@@ -224,8 +224,8 @@ public class StellarFluidConduitNetwork extends AbstractConduitNetwork<ILiquidCo
         public int hashCode() {
             final int prime = 31;
             int result = 1;
-            result = prime * result + ((conDir == null) ? 0 : conDir.hashCode());
-            result = prime * result + ((conduitLoc == null) ? 0 : conduitLoc.hashCode());
+            result = prime * result + (conDir == null ? 0 : conDir.hashCode());
+            result = prime * result + (conduitLoc == null ? 0 : conduitLoc.hashCode());
             return result;
         }
 
@@ -245,13 +245,8 @@ public class StellarFluidConduitNetwork extends AbstractConduitNetwork<ILiquidCo
                 return false;
             }
             if (conduitLoc == null) {
-                if (other.conduitLoc != null) {
-                    return false;
-                }
-            } else if (!conduitLoc.equals(other.conduitLoc)) {
-                return false;
-            }
-            return true;
+                return other.conduitLoc == null;
+            } else return conduitLoc.equals(other.conduitLoc);
         }
 
     }

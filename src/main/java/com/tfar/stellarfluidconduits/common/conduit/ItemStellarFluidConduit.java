@@ -58,19 +58,13 @@ public class ItemStellarFluidConduit extends AbstractItemConduit implements IAdv
   }
 
   @Override
-  @SideOnly(Side.CLIENT)
   public void addDetailedEntries(@Nonnull ItemStack itemStack, @Nullable EntityPlayer entityPlayer, @Nonnull List<String> list, boolean b) {
-    int extractRate;
-    int maxIo;
-    extractRate = StellarFluidConduitConfig.extractRate.get();
-    maxIo = StellarFluidConduitConfig.maxIO.get();
-
-
+    int extractRate = StellarFluidConduitConfig.extractRate.get();
+    int maxIo = StellarFluidConduitConfig.maxIO.get();
     String mbt = new TextComponentTranslation("stellarfluidconduits.fluid.millibuckets_tick").getUnformattedComponentText();
     list.add(new TextComponentTranslation("stellarfluidconduits.item_fluid_conduit.tooltip.max_extract").getUnformattedComponentText() + " " + extractRate + mbt);
     list.add(new TextComponentTranslation("stellarfluidconduits.item_fluid_conduit.tooltip.max_io").getUnformattedComponentText() + " " + maxIo + mbt);
     SpecialTooltipHandler.addDetailedTooltipFromResources(list, "enderio.item_liquid_conduit_ender");
-
   }
 
   @Override

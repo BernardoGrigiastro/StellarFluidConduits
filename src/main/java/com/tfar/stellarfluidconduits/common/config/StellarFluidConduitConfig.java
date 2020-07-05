@@ -9,7 +9,6 @@ public class StellarFluidConduitConfig {
 
     public static final IValueFactory F = Config.F.section("stellarfluidconduits");
 
-
     public static final IValue<Integer> extractRate = F.make("extractRate", 12800,
             "Millibuckets per tick extracted by a stellar fluid conduit's auto extracting.").setRange(1, MAXIO).sync();
     public static final IValue<Integer> maxIO = F.make("maxIO", 51200,

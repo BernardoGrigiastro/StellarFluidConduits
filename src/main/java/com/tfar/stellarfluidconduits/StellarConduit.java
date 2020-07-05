@@ -32,37 +32,20 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = ReferenceVariables.MOD_ID)
 
 @Mod(modid = ReferenceVariables.MOD_ID, name = ReferenceVariables.MOD_NAME, version = ReferenceVariables.VERSION, dependencies = ReferenceVariables.DEPENDENCIES)
-public class StellarConduit implements IEnderIOAddon{
+public class StellarConduit implements IEnderIOAddon {
 
         public static final IConduitTexture ICON_KEY = new ConduitTexture(
                 TextureRegistry.registerTexture("stellarfluidconduits:blocks/liquid_conduit", false), ConduitTexture.arm(0));
         public static final IConduitTexture ICON_CORE_KEY = new ConduitTexture(
                 TextureRegistry.registerTexture("stellarfluidconduits:blocks/conduit_core_1", false), ConduitTexture.core());
 
-
-
-
-
-    public static Logger logger;
-
     private static ConfigHandler configHandler;
+
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-
-
-
-
-
-        logger = event.getModLog();
         configHandler = new ConfigHandlerEIO(event, Config.F);
-
-
-
-
     }
-
-
 
     @EventHandler
     public void init(FMLInitializationEvent event)
@@ -73,16 +56,7 @@ public class StellarConduit implements IEnderIOAddon{
                 UUID.nameUUIDFromBytes("Random UUID".getBytes()),
                 StellarFluidConduit.class,
                 StellarFluidConduit.class));
-
-
         PacketHandler.init(event);
-    }
-    @EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
-    }
-
-    @EventHandler
-    public void serverStart(FMLServerStartingEvent event) {
     }
 
     @SubscribeEvent
